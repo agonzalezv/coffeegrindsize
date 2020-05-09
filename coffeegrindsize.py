@@ -17,10 +17,10 @@ from tkinter import filedialog
 from tkinter import *
 from PIL import ImageTk, Image
 
+matplotlib.use("TkAgg")
+
 # Set thick axes
 rc("axes", linewidth=2)
-
-matplotlib.use("TkAgg")
 
 # Temporary for debugging purposes
 import pdb

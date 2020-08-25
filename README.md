@@ -68,9 +68,11 @@ brew install tcl-tk openssl readline sqlite3 \
 Also, you may need the following python libraries: 
 
 ```
-pip3 install matplotlib pandas tkinter numpy jupyter \
-             PyQt5 PyQt4 pycairo cairocffi PyGObject \
-             ipython tornado Cython pytest ipykernel \
-             configparser six pillow Image macholib \
-             scipy pyinstaller setuptools wxPython
+pip3 install \
+  matplotlib pandas tkinter numpy jupyter \
+  PyQt5 PyQt4 pycairo cairocffi PyGObject \
+  ipython tornado Cython pytest ipykernel \
+  configparser six pillow Image macholib \
+  scipy pyinstaller setuptools wxPython \
+  pysimplegui
 ```

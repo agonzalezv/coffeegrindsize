@@ -1,10 +1,12 @@
 import React, { useRef, useEffect } from 'react';
+import useGlobal from './store'
 import './css/canvas.css';
 
 
 const Board = () => {
   const canvasRef = useRef(null);
   const colorsRef = useRef(null);
+  const [globalState, globalActions] = useGlobal();
 
   useEffect(() => {
 
@@ -35,10 +37,10 @@ const Board = () => {
     const getMousePos = (e) => {
       const rect = canvas.getBoundingClientRect();
       return {
-          x: (e.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
-          y: (e.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
+        x: (e.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+        y: (e.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
       };
-  }
+    }
 
     // ------------------------------- create the drawline ----------------------------
 
@@ -51,7 +53,7 @@ const Board = () => {
       context.stroke();
       context.closePath();
 
-      if (!emit) { return; }      
+      if (!emit) { return; }
     };
 
     // ---------------- mouse movement --------------------------------------
@@ -82,7 +84,7 @@ const Board = () => {
 
     const throttle = (callback, delay) => {
       let previousCall = new Date().getTime();
-      return function() {
+      return function () {
         const time = new Date().getTime();
 
         if ((time - previousCall) >= delay) {
@@ -117,9 +119,18 @@ const Board = () => {
 
   // ------------- The Canvas and color elements --------------------------
 
+  const imgUrl = globalState.canvas.bgURL
+  const style = {
+    backgroundImage: `url(${imgUrl})`,
+    backgroundColor: '#999999',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain'
+
+  }
+
   return (
-    <>    
-      <canvas ref={canvasRef} className="whiteboard" />
+    <>
+      <canvas ref={canvasRef} style={style} className="whiteboard" />
       <div ref={colorsRef} className="colors">
         <div className="color black" />
         <div className="color red" />

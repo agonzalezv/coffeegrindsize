@@ -1,19 +1,32 @@
-import React from 'react'
+import React from 'react';
+import useGlobal from './store'
 import {
-  Container,  
+  Container,
   Dropdown,
-  Menu,  
+  Menu,
+  Input
 } from 'semantic-ui-react'
 
-
 export default function TopNav() {
+  const [globalState, globalActions] = useGlobal();
+
   return (
-    <Menu fixed='top' inverted>
+    <Menu
+      canvas={globalState.canvas}
+      fixed='top'
+      inverted
+    >
       <Container>
-        <Menu.Item as='a' header>          
+        <Menu.Item as='a' header>
           CoffeeGrindSize
         </Menu.Item>
-        <Menu.Item as='a'>Open Image</Menu.Item>
+        <Menu.Item>
+          <Input
+            type="file"
+            id="upload-button"
+            onChange={globalActions.setCanvasURL}
+          />
+        </Menu.Item>
         <Menu.Item as='a'>Select Reference Object</Menu.Item>
         <Menu.Item as='a'>Select Analysis Region</Menu.Item>
         <Menu.Item as='a'>Launch Particle Detection</Menu.Item>

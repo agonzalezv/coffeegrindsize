@@ -32,7 +32,7 @@ const Board = () => {
     for (let i = 0; i < colors.length; i++) {
       colors[i].addEventListener('click', onColorUpdate, false)
     }
-    let drawing = false
+    const drawing = false
 
     const getMousePos = e => {
       const rect = canvas.getBoundingClientRect()
@@ -82,7 +82,7 @@ const Board = () => {
       // drawLine(current.x, current.y, pos.x, pos.y, current.color, true);
     }
 
-    var isFirstPoint = true
+    let isFirstPoint = true
     const drawPolygon = (x, y, color) => {
       context.strokeStyle = color
       context.lineWidth = 1
